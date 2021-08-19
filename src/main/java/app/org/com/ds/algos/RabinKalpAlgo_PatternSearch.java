@@ -24,8 +24,7 @@ public class RabinKalpAlgo_PatternSearch {
             h = (h * d) % q;
         }
         System.out.println("final value of h : " + h);
-        // Calculate the hash value of pattern and first
-        // window of text
+        // Calculate the hash value of pattern and first window of text
         for (i = 0; i < M; i++) {
             p = (d * p + pat.charAt(i)) % q;
             t = (d * t + txt.charAt(i)) % q;
