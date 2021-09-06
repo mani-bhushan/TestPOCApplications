@@ -25,6 +25,10 @@ public class MapOfElementCounts {
 		}
 		System.out.println(map1);
 		
+		/**
+		 * Function.identity() is (n -> n) i.e 
+		 * It returns a function that always returns its input argument.
+		 */
 		Map<Integer, Long> stream1 = Arrays.stream(arr, 0, arr.length).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 		Map<Integer, Long> stream2 = Arrays.stream(arr, 0, arr.length).collect(Collectors.groupingBy(n -> n, Collectors.counting()));
 		System.out.println(stream1);

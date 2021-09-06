@@ -1,21 +1,27 @@
 package app.org.com.pattern.singleton;
 
+import app.org.com.ds.algos.PrimeNumbers;
+
 public enum EnumSingleton {
 
 	INSTANCE;
+	
+	private String something;
+	private PrimeNumbers prime;
 
-    public String doSomething(String str) { 
-
-    	System.out.println("doSomething()");
-    	this.something = str;
-    	return this.something;
-    }
-
-    public synchronized String getSomething() { 
-    
-    	System.out.println("getSomething()");
+	public synchronized String getSomething() { 
+		setSomething("Hello");
     	return something; 
     }
+	
+	public synchronized PrimeNumbers getPrime() { 
+		this.prime = new PrimeNumbers();
+    	return prime; 
+    	// https://www.youtube.com/watch?v=YOi5i-93lgo
+    }
 
-    private String something;
+	private void setSomething(String str) {
+		EnumSingleton.INSTANCE.something=str;
+	}
+
 }
