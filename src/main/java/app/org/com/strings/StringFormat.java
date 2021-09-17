@@ -5,6 +5,22 @@ import java.util.regex.Pattern;
 public class StringFormat {
 
 	public static void main(String[] args) {
+		
+		System.out.println("piper".charAt(3));
+		System.out.println("piper".compareTo("njn"));
+		
+		String pipe = "Hello World!";
+		System.out.println("print different values: \n" 
+				+ pipe.substring(11, 12) 
+				+ pipe.substring(11) 
+				+ pipe.charAt(11));
+		
+		
+		if ("" instanceof String) {
+			System.out.println("true");
+		}
+		
+		
 		String str = checkAndReplace("0x01C"); 
 		Boolean val = checkPattern("0x012");
 		if (!val) {
