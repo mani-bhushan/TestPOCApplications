@@ -40,5 +40,9 @@ public class MinSwapSolution {
 		int res = minimumSwaps(arr);
 		scanner.close();
 
+		
+		StringBuilder builder = new StringBuilder(new StringBuffer("Hello").toString());
+		
+		StringBuffer buffer = new StringBuffer(new StringBuilder("Hello").toString());
 	}
 }

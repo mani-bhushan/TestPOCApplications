@@ -7,5 +7,6 @@ public class RunExp extends Thread {
     {    
         System.out.println("running...");   
         System.out.println(EnumSingleton_ConnectionManager.INSTANCE.getEntityManager().hashCode());
+        
     }      
 }

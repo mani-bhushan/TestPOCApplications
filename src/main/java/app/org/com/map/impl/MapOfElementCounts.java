@@ -2,6 +2,7 @@ package app.org.com.map.impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +27,9 @@ public class MapOfElementCounts {
 		System.out.println(map1);
 		
 		/**
+		 * 
+		 * Collects the counting of each elements.
+		 * 
 		 * Function.identity() is (n -> n) i.e 
 		 * It returns a function that always returns its input argument.
 		 */
@@ -33,9 +37,49 @@ public class MapOfElementCounts {
 		Map<Integer, Long> stream2 = Arrays.stream(arr, 0, arr.length).collect(Collectors.groupingBy(n -> n, Collectors.counting()));
 		System.out.println(stream1);
 		System.out.println(stream2);
+
+		/**
+		 * 
+		 * Collects the counting of each elements.
+		 * Prints key for the maximum occurring element.
+		 * 
+		 */
+		String str1 = "Java is a platform independent aaaa.";
+		String[] strArr = str1.split("");
+		Map<String, Long> stream3 = Arrays.stream(strArr, 0, strArr.length).collect(Collectors.groupingBy(n -> n, Collectors.counting()));
+		String key = Collections.max(stream3.entrySet(), Map.Entry.comparingByValue()).getKey();
+		System.out.println("stream3 : " + stream3);
+		System.out.println("key : " + key);
 		
+		/**
+		 * 
+		 * create a stream of integer.
+		 * Limits to 10th element.
+		 * 
+		 */
+		Stream<Integer> intStream = Stream.iterate(0, n -> n + 2).limit(10);
+                //.forEach(x -> System.out.println(x));
 		
-		Stream<Integer> intStream = Stream.iterate(0, n -> n + 2);
+		Stream.iterate(0, n -> n + 1)
+				.filter(x -> x % 2 != 0) //odd value
+				.limit(10)
+				.forEach(x -> System.out.println(x));
+		
+		/**
+		 * 
+		 * A classic Fibonacci example.
+		 * 
+		 */
+		StringBuilder builder = new StringBuilder();
+		Stream.iterate(new int[]{0, 1}, n -> new int[]{n[1], n[0] + n[1]})
+				.limit(20)
+				.map(n -> n[0])
+				.forEach(x -> {
+					builder.append(x + ", ");
+					//System.out.print(x + "  ");
+				});
+		
+		System.out.println(builder.substring(0, (builder.length()-2)) + ".");
 		
 		List<Product> productsList = new ArrayList<Product>();  
         //Adding Products  
@@ -47,7 +91,9 @@ public class MapOfElementCounts {
         
         productsList.stream()  
         .filter(product -> product.price >= 30000)  
-        .forEach(product -> System.out.println(product.name));    
+        .forEach(product -> System.out.println(product.name));
+        
+        
 	}
 	
 }
@@ -60,5 +106,5 @@ class Product{
         this.id = id;  
         this.name = name;  
         this.price = price;  
-    }  
-}  
+    }
+}

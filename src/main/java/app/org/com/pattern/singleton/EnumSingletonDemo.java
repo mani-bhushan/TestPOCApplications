@@ -3,13 +3,11 @@ package app.org.com.pattern.singleton;
 public class EnumSingletonDemo {
 
 	public static void main(String[] args) {
-		ABC obj1 = ABC.INSTANCE;
-		obj1.i = 5;
-		obj1.show("obj1");
-
-		ABC obj2 = ABC.INSTANCE;
-		obj2.i = 7;
-		obj2.show("obj2");
+		/*
+		 * ABC obj1 = ABC.INSTANCE; obj1.i = 5; obj1.show("obj1");
+		 * 
+		 * ABC obj2 = ABC.INSTANCE; obj2.i = 7; obj2.show("obj2");
+		 */
 
 		Direction d1 = Direction.getInstance("W");
 		System.out.println(d1.value());
@@ -30,21 +28,42 @@ public class EnumSingletonDemo {
 		Address address3 = Address.INSTANCE3;
 		address3.show();
 		address3.toString();
+		
+		Object obj = null;
+		String str = "Hello";
+		String st = null;
+		Object obj1 = st;
+		printMsg(null);
+		printMsg(obj);
+		printMsg(str);
+		printMsg(st);
+		printMsg(obj1);
+		st = (String) obj;
+		printMsg(st);
 	}
 	
-	public enum ABC {
-
-		INSTANCE;
-		
-		int i;
-		
-		public void show(String str) {
-			System.out.println(str + " : i : " + i);
-		}
+	public static void printMsg(Object obj) {
+		System.out.println("object");		
 	}
+	
+	public static void printMsg(String obj) {
+		System.out.println("String");		
+	}
+	
+	/*
+	 * public enum ABC {
+	 * 
+	 * INSTANCE;
+	 * 
+	 * int i;
+	 * 
+	 * public void show(String str) { System.out.println(str + " : i : " + i); } }
+	 */
 	
 	public enum Direction {
-		  
+		
+		//Set e = new HashSet<>();
+		
 	    North("N"), South("S"), East("E"), West("W"), AskGoogle("AskGoogle");
 	  
 	    private final String val;
